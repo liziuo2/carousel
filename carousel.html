@@ -155,6 +155,7 @@
         let ul = document.querySelector('ul')
         let spanArr = document.querySelectorAll('.point span')
         let right = document.querySelector('.arrow-right')
+        let left = document.querySelector('.arrow-left')
 
         // 3.给span标签设置点击事件
         for (let i = 0; i < spanArr.length; i++) {
@@ -195,6 +196,25 @@
             } else {
                 spanArr[index].className = 'current'
             }
+        }
+
+        // 6.给左箭头设置点击事件
+        left.onclick = function () {
+            // 6.1 判断图片是否为第一张
+            if (index == 0) {
+                index = ul.children.length - 1
+                ul.style.left = -index * slider.offsetWidth + 'px'
+            }
+            // 6.2 图片不为第一张index就-1
+            index--
+            // 6.3 调用缓动动画函数
+            animate(ul, -index * slider.offsetWidth)
+            // 6.4 排他
+            for (let i = 0; i < spanArr.length; i++) {
+                spanArr[i].className = ''
+            }
+            // 6.5 给对应下标的span标签添加current类
+            spanArr[index].className = 'current'
         }
     </script>
 </body>
