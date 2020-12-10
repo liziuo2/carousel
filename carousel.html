@@ -177,7 +177,7 @@
         let index = 0
 
         // 5.给右箭头设置点击事件
-        right.onclick = function () {
+        /* right.onclick = function () {
             // 5.2 判断图片是否为最后一张
             if (index == ul.children.length - 1) {
                 // 为最后一张下标立马改为0,ul的left也改为0
@@ -198,7 +198,26 @@
             } else {
                 spanArr[index].className = 'current'
             }
+        } */
+        // 8.1 封装右箭头点击事件函数
+        function rightClick() {
+            if (index == ul.children.length - 1) {
+                index = 0
+                ul.style.left = 0
+            }
+            index++
+            animate(ul, -index * slider.offsetWidth)
+            for (let i = 0; i < spanArr.length; i++) {
+                spanArr[i].className = ''
+            }
+            if (index == ul.children.length - 1) {
+                spanArr[0].className = 'current'
+            } else {
+                spanArr[index].className = 'current'
+            }
         }
+        // 8.2 设置右箭头点击事件,调用右箭头点击事件函数
+        right.onclick = rightClick
 
         // 6.给左箭头设置点击事件
         left.onclick = function () {
@@ -217,6 +236,20 @@
             }
             // 6.5 给对应下标的span标签添加current类
             spanArr[index].className = 'current'
+        }
+
+        // 7. 一进页面调用右箭头点击事件函数
+        slider.timeID = setInterval(rightClick, 3000)
+
+        // 8.给slider盒子设置鼠标移出事件
+        slider.onmouseleave = function () {
+            // 8.3 开启定时器,定时器内调用右箭头点击事件函数
+            slider.timeID = setInterval(rightClick, 3000)
+        }
+        // 9.给slider盒子设置鼠标移入事件
+        slider.onmouseenter = function () {
+            // 清除定时器
+            clearInterval(slider.timeID)
         }
     </script>
 </body>
