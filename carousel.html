@@ -125,6 +125,31 @@
         </div>
     </div>
 
+    <script>
+        // 1.封装缓动动画函数
+        function animate(elm, target) {
+            // 1.1 清空定时器
+            clearInterval(elm.timeID)
+            // 1.2 开启定时器
+            elm.timeID = setInterval(function () {
+                // 1.3 获取元素当前位置
+                let current = elm.offsetLeft
+                // 1.4 设置步长(缓动动画步长会越来越短,可用目标位置-当前位置的差除以10)
+                let step = (target - current) / 10
+                // 1.5 判断步长是正数还是负数(正数向上取整,负数向下取整,确保能够到达目标位置)
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)
+                // 1.6 更改当前位置的值
+                current += step
+                // 1.7 更改元素的left值
+                elm.style.left = current + 'px'
+                // 1.8 判断元素是否到达目标位置,到达则清空定时器
+                if (current == target) {
+                    clearInterval(elm.timeID)
+                }
+            }, 30)
+        }
+
+    </script>
 </body>
 
 </html>
