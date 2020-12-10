@@ -148,7 +148,24 @@
                 }
             }, 30)
         }
+        // 2.获取到目标元素
+        let slider = document.querySelector('.slider')
+        let ul = document.querySelector('ul')
+        let spanArr = document.querySelectorAll('.point span')
 
+        // 3.给span标签设置点击事件
+        for (let i = 0; i < spanArr.length; i++) {
+            spanArr[i].onclick = function () {
+                // 3.1 调用缓动动画函数
+                animate(ul, -i * slider.offsetWidth)
+                // 3.2 排他
+                for (let j = 0; j < spanArr.length; j++) {
+                    spanArr[j].className = ''
+                }
+                // 3.3 给当前点击的span标签添加current类
+                this.className = 'current'
+            }
+        }
     </script>
 </body>
 
