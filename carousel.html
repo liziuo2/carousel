@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .slider {
+            height: 340px;
+            width: 790px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 6000px;
+        }
+
+        .slider li {
+            width: 790px;
+            height: 340px;
+            float: left;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .arrow {
+            display: none;
+        }
+
+        .slider:hover .arrow {
+            display: block;
+        }
+
+        .arrow-left,
+        .arrow-right {
+            font-family: "SimSun", "宋体";
+            width: 30px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 60px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+        }
+
+        .arrow-left {
+            left: 0;
+        }
+
+        .arrow-right {
+            right: 0;
+        }
+
+        .point {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -76px;
+            width: 152px;
+            height: 20px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .point span {
+            display: block;
+            float: left;
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            opacity: .7;
+            border-radius: 50%;
+            margin: 2px 2px;
+            cursor: pointer;
+        }
+
+        .current {
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <!--图片容器-->
+        <ul>
+            <li><a href="#"><img src="./images/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/6.jpg" alt=""></a></li>
+        </ul>
+        <!--箭头-->
+        <div class="arrow">
+            <span class="arrow-left">&lt;</span>
+            <span class="arrow-right">&gt;</span>
+        </div>
+        <div class="point">
+            <span class="current"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+</body>
+
+</html>
